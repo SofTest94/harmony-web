@@ -1,0 +1,130 @@
+.sidebar {
+  position: sticky;
+  top: 0px;
+
+  height: 100vh;
+  background: #fff;
+  width: 20%;
+  border-right: 1px solid var(--primary-gray);
+  .img-logo {
+    width: 102px;
+    height: 40px;
+  }
+  .img-iso {
+    height: 40px;
+  }
+  .img-arrow {
+    width: 12px;
+    height: 8px;
+  }
+  .sidebar-header {
+    padding: 1.2rem 1.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 40px 0;
+  }
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .menu-item-active {
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 1.7rem;
+    background: var(--blue-light);
+    border-right: 4px solid var(--primary-purple);
+    font-weight: 600;
+  }
+  .menu-icon {
+    margin: 0 24px 0 0;
+  }
+  .menu-title {
+    color: var(--secondary-blue);
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 1.7rem;
+  }
+  .menu-item:hover {
+    background: var(--blue-light);
+    cursor: pointer;
+  }
+  .menu-item-dropdown {
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 1.7rem;
+    justify-content: space-between;
+    .dropdown-flex {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .menu-item-dropdown:hover {
+    background: var(--background-layout);
+    cursor: pointer;
+  }
+}
+
+.sidebar-collapsed {
+  height: 100vh;
+  background: #fff;
+  border-right: 1px solid var(--primary-gray);
+
+  .img-iso {
+    height: 40px;
+  }
+  .img-arrow {
+    width: 12px;
+    height: 8px;
+  }
+  .sidebar-header {
+    padding: 1rem 0.5rem 1rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 40px 0;
+  }
+  .menu-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .menu-item-active {
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 1.7rem;
+    background: var(--primary-gray);
+    border-right: 4px solid var(--primary-purple);
+    font-weight: 600;
+  }
+  .menu-icon {
+    margin: 0 10px 0 0;
+  }
+  .menu-title {
+    display: none;
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 1.7rem;
+  }
+  .menu-item:hover {
+    background: var(--background-layout);
+    cursor: pointer;
+  }
+  .menu-item-dropdown {
+    display: flex;
+    align-items: center;
+    padding: 0.9rem 1.7rem;
+    justify-content: space-between;
+    .dropdown-flex {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .menu-item-dropdown:hover {
+    background: var(--background-layout);
+    cursor: pointer;
+  }
+}

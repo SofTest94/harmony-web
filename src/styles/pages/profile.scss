@@ -1,0 +1,32 @@
+.profile-main {
+  display: flex;
+  flex-direction: column;
+
+  .profile-company-logo {
+    height: 129px;
+    width: 129px;
+    border-radius: 75px;
+    background: var(--tertiary-gray);
+    margin-bottom: 16px;
+  }
+  .profile-container {
+    display: flex;
+    gap: 1rem;
+    .profile-section {
+      width: 100%;
+
+      .profile-section-title-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 32px;
+        .profile-section-title {
+          font-size: 16px;
+          color: var(--primary-blue);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

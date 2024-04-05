@@ -1,0 +1,23 @@
+.alert-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  font-size: 14px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  .alert-message {
+    flex: 1;
+  }
+}
+.error {
+  background: var(--status-error);
+}
+.success {
+  background: var(--status-success);
+}
+.warning {
+  background: var(--status-warning);
+}

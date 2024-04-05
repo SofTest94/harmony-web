@@ -1,0 +1,32 @@
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0rem;
+
+  .pagination-info {
+    font-size: 12px;
+    color: var(--tertiary-blue);
+  }
+
+  .pagination-pages {
+    display: flex;
+    gap: 10px;
+    .pagination-button {
+      background: var(--primary-gray);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: var(--tertiary-gray);
+    }
+    .pagination-button-active {
+      background: var(--primary-purple);
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #fff;
+    }
+  }
+}
