@@ -1,0 +1,31 @@
+// import React from 'react';
+// import { imagesTexts } from '../../../utils/utils';
+// // import './Section2.scss'; // Importar el archivo SCSS con los estilos
+// import '../../styles/Body/Section2.scss';
+
+// const Section2: React.FC = () => {
+//   return (
+//     <>
+//       <div className="title-container">
+//         <h1 className="title">
+//           Es por ello que en Harmony nosotros te guiamos en cada paso hacia tu libertad tratando lesiones cómo:
+//         </h1>
+//       </div>
+//       <div className="image-text-container">
+//         {imagesTexts.map((imageText, index) => (
+//           <div key={index} className="image-text">
+//             <div style={{ textAlign: 'justify', margin: '0 11%' }}>
+//               <img src={imageText.imageUrl} alt="Descripción de la imagen" className="image" />
+//               <h3 className="text-title">{imageText.title}</h3>
+//               <div className="text">
+//                 <p>{imageText.text}</p>
+//               </div>
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default Section2;

@@ -1,0 +1,123 @@
+.section-container {
+  display: flex;
+  justify-content: center;
+  min-width: 10%;
+  margin: 0px 10%;
+}
+
+.section-content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  // max-width: 1200px;
+  // margin-top: 5vh;
+}
+
+.section-text {
+  width: calc(50% - 65px);
+  // margin-top: 6vh;
+}
+
+.section-text h1 {
+  font-family: 'Roboto';
+  font-size: 2.8vw;
+  font-weight: 700;
+  text-align: left;
+  padding-top: 8vh;
+}
+
+.section-text p {
+  font-family: 'Roboto';
+  font-size: 1.5vw;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.section-btn {
+  background-color: #f9ec08;
+  color: black;
+  padding: 0.625vw 1.5625vw;
+  font-size: 1vw;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0.3125vw 0.3125vw 0.9375vw 0 rgba(0, 0, 0, 0.1);
+}
+
+.section-image {
+  width: calc(50% + 65px);
+  display: flex;
+  align-items: center;
+}
+
+.image {
+  width: 100%;
+  max-width: 50%; /* Cambia el ancho máximo a un porcentaje */
+  max-height: 100%; /* Esto asegura que la altura se ajuste automáticamente según el ancho */
+  margin: 0 auto;
+  transition: max-width 0.5s, max-height 0.5s;
+
+  // @media (max-width: 1200px) {
+  //   max-width: 45%; /* Ajusta el ancho máximo para tamaños de pantalla más pequeños */
+  // }
+
+  // @media (max-width: 968px) {
+  //   max-width: 40%; /* Ajusta el ancho máximo para tamaños de pantalla aún más pequeños */
+  // }
+
+  // @media (max-width: 768px) {
+  //   max-width: 100%; /* Restaura el ancho máximo al 100% para tamaños de pantalla más pequeños */
+  // }
+}
+
+// @media (max-width: 300px) {
+//   .section-content {
+//     flex-direction: row;
+//     justify-content: center;
+//   }
+
+//   .section-text {
+//     width: 95%;
+//     margin: 10px auto;
+//     font-size: 3vw;
+//     margin-top: 0;
+//     padding-top: 0;
+//   }
+
+//   .section-text h1 {
+//     padding-top: 0;
+//   }
+// }
+
+// @media (max-width: 1200px) {
+//   .section-content {
+//     max-width: 80%;
+//   }
+
+//   // .image {
+//   //   max-height: 600px;
+//   //   max-width: 150px;
+//   // }
+
+//   // .section-text {
+//   //   margin-top: 0;
+//   //   min-width: 10px;
+//   //   // background-color: red;
+//   //   // width: 30%;
+//   // }
+// }
+
+// @media (max-width: 368px) {
+//   .section-content {
+//     max-width: 80%;
+//   }
+
+//   .image {
+//     max-height: 250px;
+//     max-width: 150px;
+//   }
+
+//   .section-text {
+//     margin-top: 0;
+//   }
+// }
