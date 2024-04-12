@@ -1,0 +1,39 @@
+import React from 'react';
+import Button from '../../atoms/Button';
+
+const Section1: React.FC = () => {
+  return (
+    <div style={{ display: 'flex' }}>
+      <div style={{ width: '50%' }}>
+        <div style={{ paddingTop: '90px' }}>
+          <h1>La búsqueda de la felicidad y la libertad se entrelaza con la superación diaria del dolor físico</h1>
+          <br />
+          <p>
+            Cada ejercicio, cada sesión de rehabilitación, representa un camino hacia la recuperación y el establecimiento
+            de tu libertad de movimiento. Encontrar la alegría en cada pequeño avance, en cada nueva habilidad recuperada,
+            es parte fundamental de ese viaje hacia una vida más plena y activa.
+          </p>
+          <div>
+            <Button
+              onClick={function (): void {
+                throw new Error('Function not implemented.');
+              }}
+              className={'section-btn'}
+            >
+              Agendar citasss
+            </Button>
+          </div>
+        </div>
+      </div>
+      <div style={{ width: '50%' }}>
+        <img
+          src="/img/Capa_1.png"
+          alt="Descripción de la imagen"
+          style={{ width: '400px', height: '500px', margin: '0 auto', display: 'block' }}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Section1;

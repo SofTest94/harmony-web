@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Satoshi+Variable&display=swap');
+
+$font-satoshi-variable: 'Satoshi Variable', sans-serif;
+
+.churrito {
+  background-image: url('../../../public/img/2Dimg3.png');
+  background-repeat: no-repeat;
+  width: 100%;
+  background-size: contain;
+  background-position: top;
+  position: relative;
+}
+.churrito2 {
+  background-image: url('../../../public/img/2Dimg2.png');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 1000px;
+  // margin-top: -80%;
+  margin-top: -110%;
+  background-size: contain;
+  background-position: top;
+  // position: relative;
+  // background-color: red;
+}
+.header-container {
+  width: 100%;
+  height: 120vh;
+  background-image: url('../../../public/img/2Dimg2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+  position: relative;
+
+  .text-container {
+    position: absolute;
+    top: 475px;
+    transform: translate(-50%, -50%);
+    text-align: start;
+    color: white;
+    font-family: $font-satoshi-variable;
+
+    p {
+      font-size: 2vw; // Tamaño de fuente en unidades relativas
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: 5vw; // Tamaño de fuente en unidades relativas
+    }
+
+    span {
+      font-size: 4.5vw; // Tamaño de fuente en unidades relativas
+      font-weight: 700;
+    }
+  }
+
+  .section-btn {
+    width: 23px;
+    height: 90px;
+    opacity: 0;
+    background-color: #f9ec08;
+    font-weight: 600;
+    margin-top: 55px;
+    padding: 13px 40.5px; // Ajustar el padding para el botón
+    border-radius: 10px;
+    font-size: 3vw; // Tamaño de fuente en unidades relativas
+    box-shadow: 5px 5px 15px 0px #0000001a;
+  }
+}
+
+// Consulta de medios para móviles
+@media screen and (max-width: 768px) {
+  .header-container {
+    background-color: #00d6b2; // Cambiar el color de fondo para móviles
+  }
+
+  .text-container {
+    p {
+      font-size: 4vw; // Tamaño de fuente más pequeño en dispositivos móviles
+    }
+
+    h1 {
+      font-size: 8vw; // Tamaño de fuente más pequeño en dispositivos móviles
+    }
+
+    span {
+      font-size: 7vw; // Tamaño de fuente más pequeño en dispositivos móviles
+    }
+  }
+
+  .section-btn {
+    font-size: 5vw; // Tamaño de fuente más pequeño en dispositivos móviles
+    padding: 10px 30px; // Ajustar el padding para el botón en dispositivos móviles
+  }
+}
