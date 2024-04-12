@@ -23,7 +23,7 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header style={{ backgroundColor: 'red' }}>
+    <header>
       <div style={{ position: 'relative', width: '100%', height: '100%' }}>
         <img
           // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTfW3LK612W9CTal5eAfluf0juuIdypb3XPUihuIvzHg&s"
