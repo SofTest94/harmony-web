@@ -1,0 +1,31 @@
+// Section4.scss
+
+.section4-container {
+  padding: 5%;
+  margin: 3%;
+  border-radius: 10px;
+}
+
+.section4-heading {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+  font-size: 3.5vh;
+  min-width: 70%;
+}
+
+.section4-carousel {
+  text-align: justify;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 900px) {
+  .section4-carousel .card-description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10; // Número máximo de líneas
+    -webkit-box-orient: vertical;
+  }
+}
