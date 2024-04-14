@@ -1,0 +1,45 @@
+.title-container {
+  text-align: center;
+  max-width: 50%;
+  margin: 0 auto;
+  // margin-bottom: 6%;
+  margin-top: 5%;
+
+  .title {
+    font-size: 2.5vw;
+  }
+}
+
+.image-text-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 6%;
+
+  .image-text {
+    width: 33.33%;
+    padding: 0 10px;
+    box-sizing: border-box;
+
+    .image {
+      max-width: 960px;
+      height: 254px;
+      width: 100%;
+    }
+
+    .text-title {
+      font-size: 2vw;
+      margin-top: 5%;
+      text-align: start;
+    }
+
+    .text {
+      max-width: 100%;
+      margin: 0 auto;
+      text-align: start;
+      margin-top: 10%;
+      margin-bottom: 25%;
+      font-size: 1.5vw;
+    }
+  }
+}
