@@ -38,7 +38,7 @@ const handleFacebookClick = () => {
         handleSocialMediaClick('https://www.facebook.com/HelldyTherapy');
         break;
       case 3:
-        handleSocialMediaClick('https://www.instagram.com/helldytherapy.dermatofacional');
+        handleSocialMediaClick('https://www.instagram.com/harmony.fisioterapia/');
         break;
       case 4:
         handleSocialMediaClick('https://www.youtube.com/@helldytherapy8125');
