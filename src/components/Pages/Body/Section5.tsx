@@ -45,7 +45,7 @@ const Section5: React.FC = () => {
           minWidth: '70%',
         }}
       >
-        <h1>Esto dicen las personas que se han recuperado con nosotros</h1>
+        <h1>Socios que nos eligen para hacer parte de su equipo</h1>
       </div>
 
       {/* Carrusel de imágenes */}
