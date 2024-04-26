@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { data_partners } from '../../../utils/utils';
 import Slider from 'react-slick';
 import CardPartners from '../../molecules/CardPartners';
+import { Partners } from '../../types/partners';
+import { partnerServices } from '../../services/partners';
 
 const settings = {
   speed: 1800,
@@ -34,6 +36,21 @@ const settings = {
 };
 
 const Section5: React.FC = () => {
+  const [imagesTexts, setImagesTexts] = useState<Partners[]>([]);
+
+  useEffect(() => {
+    // Llama al servicio para obtener los datos
+    async function fetchImagesTexts() {
+      try {
+        const data = await partnerServices.getAllPartners(''); // Llama a la función del servicio
+        setImagesTexts(data); // Actualiza el estado con los datos recibidos del servicio
+      } catch (error) {
+        console.error('Error fetching images texts:', error);
+      }
+    }
+
+    fetchImagesTexts(); // Llama a la función de carga al montar el componente
+  }, []);
   return (
     <div style={{ padding: '5%', margin: '3%', borderRadius: '10px' }}>
       <div
@@ -51,8 +68,13 @@ const Section5: React.FC = () => {
       {/* Carrusel de imágenes */}
       <div style={{ textAlign: 'justify', width: '100%', margin: '0 auto', paddingTop: '5%' }}>
         <Slider {...settings}>
-          {data_partners.map((imageText, index) => (
-            <CardPartners key={index} imageUrl={imageText.imageUrl} title={imageText.title} description={imageText.text} />
+          {imagesTexts.map((imageText, index) => (
+            <CardPartners
+              key={index}
+              imageUrl={imageText.img}
+              title={imageText.title}
+              description={imageText.description}
+            />
           ))}
         </Slider>
       </div>
