@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { data_carrusel, data_review, imagesTexts } from '../../../utils/utils';
 import Slider from 'react-slick';
 import Button from '../../atoms/Button';
 import Card from '../../molecules/Card';
+
+import { reviewServices } from '../../services/reviews';
+import { Reviews } from '../../types/reviews';
 
 const settings = {
   dots: true,
@@ -28,6 +31,21 @@ const settings = {
 };
 
 const Section4: React.FC = () => {
+  const [imagesTexts, setImagesTexts] = useState<Reviews[]>([]); // Indica que el estado es un array de ImageText
+
+  useEffect(() => {
+    // Llama al servicio para obtener los datos
+    async function fetchImagesTexts() {
+      try {
+        const data = await reviewServices.getAllReviews(''); // Llama a la función del servicio
+        setImagesTexts(data); // Actualiza el estado con los datos recibidos del servicio
+      } catch (error) {
+        console.error('Error fetching images texts:', error);
+      }
+    }
+
+    fetchImagesTexts(); // Llama a la función de carga al montar el componente
+  }, []);
   return (
     <div style={{ padding: '1%', margin: '3%', borderRadius: '10px' }}>
       <div>
@@ -46,8 +64,8 @@ const Section4: React.FC = () => {
         {/* Carrusel de imágenes */}
         <div style={{ textAlign: 'justify', width: '100%', margin: '0 auto' }}>
           <Slider {...settings}>
-            {data_review.map((imageText, index) => (
-              <Card imageUrl={imageText.imageUrl} title={imageText.title} description={imageText.text} />
+            {imagesTexts.map((imageText, index) => (
+              <Card imageUrl={imageText.img} title={imageText.title} description={imageText.description} />
             ))}
           </Slider>
         </div>

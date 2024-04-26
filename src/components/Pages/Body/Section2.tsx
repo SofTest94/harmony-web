@@ -1,9 +1,27 @@
-import React from 'react';
-import { imagesTexts } from '../../../utils/utils';
+import React, { useEffect, useState } from 'react';
+// import { getImagesTexts } from '../../../services/imagesTextsService'; // Importa la función para llamar al servicio
 import '../../styles/Body/Section2.scss';
 import CardServiceType from '../../molecules/CardServiceType';
+import { Treatments } from '../../types/treatments';
+import { treatmentsServices } from '../../services/treatments';
 
 const Section2: React.FC = () => {
+  const [imagesTexts, setImagesTexts] = useState<Treatments[]>([]); // Indica que el estado es un array de ImageText
+
+  useEffect(() => {
+    // Llama al servicio para obtener los datos
+    async function fetchImagesTexts() {
+      try {
+        const data = await treatmentsServices.getAllTreatments(''); // Llama a la función del servicio
+        setImagesTexts(data); // Actualiza el estado con los datos recibidos del servicio
+      } catch (error) {
+        console.error('Error fetching images texts:', error);
+      }
+    }
+
+    fetchImagesTexts(); // Llama a la función de carga al montar el componente
+  }, []);
+
   return (
     <>
       <div className="churrito">
@@ -15,7 +33,7 @@ const Section2: React.FC = () => {
         <div className="image-text-container">
           {imagesTexts.map((imageText, index) => (
             <div key={index} className="image-text">
-              <CardServiceType imageUrl={imageText.imageUrl} title={imageText.title} text={imageText.text} />
+              <CardServiceType imageUrl={imageText.img} title={imageText.title} text={imageText.description} />
             </div>
           ))}
         </div>
