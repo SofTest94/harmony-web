@@ -1,18 +1,19 @@
-// src/components/templates/MainTemplate.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../organisms/Header';
 import Footer from '../organisms/Footer';
 import Body from '../organisms/Body';
 
-interface MainTemplateProps {
-  children?: React.ReactNode;
-}
+const MainTemplate: React.FC = () => {
+  const [selectedBranch, setSelectedBranch] = useState<string>('México');
 
-const MainTemplate: React.FC<MainTemplateProps> = ({ children }) => {
+  const handleSelectBranch = (branch: string) => {
+    setSelectedBranch(branch);
+  };
+
   return (
     <>
-      <Header />
-      <Body />
+      <Header onSelectBranch={handleSelectBranch} />
+      <Body selectedBranch={selectedBranch} />
       <Footer />
     </>
   );

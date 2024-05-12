@@ -5,7 +5,12 @@ import CardServiceType from '../../molecules/CardServiceType';
 import { Treatments } from '../../types/treatments';
 import { treatmentsServices } from '../../services/treatments';
 
-const Section2: React.FC = () => {
+// const Section2: React.FC = () => {
+interface Section2Props {
+  selectedBranch: string;
+}
+
+const Section2: React.FC<Section2Props> = ({ selectedBranch }) => {
   const [imagesTexts, setImagesTexts] = useState<Treatments[]>([]); // Indica que el estado es un array de ImageText
 
   useEffect(() => {
@@ -20,14 +25,15 @@ const Section2: React.FC = () => {
     }
 
     fetchImagesTexts(); // Llama a la función de carga al montar el componente
-  }, []);
+  }, [selectedBranch]);
 
   return (
     <>
       <div className="churrito">
         <div className="title-container">
           <h1 className="title">
-            Es por ello que en Harmony nosotros te guiamos en cada paso hacia tu libertad tratando lesiones cómo:
+            Es por ello que en Harmony nosotros te guiamos en cada paso hacia tu libertad tratando lesiones cómo:{' '}
+            {selectedBranch}
           </h1>
         </div>
         <div className="image-text-container">

@@ -1,12 +1,25 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import '../styles/HeaderStyles.scss';
 import { handleScheduleAppointmentClick } from '../../utils/functions';
+import AppBar from '../AppBar';
 
-const Header: React.FC = () => {
+// const Header: React.FC = () => {
+interface HeaderProps {
+  onSelectBranch: (branch: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onSelectBranch }) => {
+  const [selectedBranch, setSelectedBranch] = useState<string>('México'); // Valor predeterminado
+
+  const handleSelectBranch = (branch: string) => {
+    setSelectedBranch(branch);
+    onSelectBranch(branch); // Llama a la función pasada desde MainTemplate
+  };
   const textoRef = useRef<HTMLHeadingElement>(null);
   const textoWidthRef = useRef<number | null>(null);
 
   useEffect(() => {
+    setSelectedBranch('México');
     const updateTextoWidth = () => {
       if (textoRef.current) {
         const textoWidth = textoRef.current.getBoundingClientRect().width;
@@ -24,6 +37,10 @@ const Header: React.FC = () => {
 
   return (
     <header>
+      <div style={{ marginTop: '3.8vw' }}>
+        <AppBar onSelectBranch={handleSelectBranch} />
+      </div>
+
       <div style={{ position: 'relative', width: '100%', height: '100%' }}>
         <img
           // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTfW3LK612W9CTal5eAfluf0juuIdypb3XPUihuIvzHg&s"
