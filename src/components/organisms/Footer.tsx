@@ -1,8 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import '../styles/HeaderStyles.scss';
 import { handleScheduleAppointmentClick, handleSocialMediaClick } from '../../utils/functions';
+import FormModal from '../molecules/FormModal';
+
 
 const Footer: React.FC = () => {
+  const [modalOpen, setModalOpen] = useState(false);
   // const textoRef = useRef<HTMLHeadingElement>(null);
 
   // const handleAgendarCitaClick = () => {
@@ -29,10 +32,20 @@ const handleFacebookClick = () => {
 // };
 
 */
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
   const handleIconClick = (op: number) => {
     switch (op) {
       case 1:
-        handleScheduleAppointmentClick('7711129510', 'Hola!, me gustaria agendar una cita.');
+        handleScheduleAppointmentClick(
+          '5576877703',
+          '¡Hola! Bienvenido a Harmony Therapy. Estamos aquí para ayudarte a encontrar la felicidad y libertad de movimiento. Por favor, déjanos tu mensaje y te responderemos pronto. ¡Gracias por elegirnos!'
+        );
         break;
       case 2:
         handleSocialMediaClick('https://www.facebook.com/HelldyTherapy');
@@ -41,10 +54,10 @@ const handleFacebookClick = () => {
         handleSocialMediaClick('https://www.instagram.com/harmony.fisioterapia/');
         break;
       case 4:
-        handleSocialMediaClick('https://www.youtube.com/@helldytherapy8125');
+        handleSocialMediaClick('https://www.youtube.com/channel/UCiHli8YiB3YalYVsltDFltw');
         break;
       case 5:
-        handleSocialMediaClick('https://www.tiktok.com');
+        handleSocialMediaClick('https://www.tiktok.com/@harmony.therapy?_t=8mFfoYgCbED&_r=1');
         break;
     }
     console.log('click!!');
@@ -102,10 +115,11 @@ const handleFacebookClick = () => {
               color: '#0064A8',
               cursor: 'pointer',
             }}
-            onClick={() => handleScheduleAppointmentClick('7711129510', 'Buenas tardes, me gustaria agendar una cita.')}
+            onClick={handleModalOpen}
           >
             Agendar cita
           </button>
+          <FormModal open={modalOpen} handleClose={handleModalClose} />
           {/* Fila con dos columnas */}
           <div style={{ display: 'flex', justifyContent: 'space-between', width: '80%', marginTop: '5vw' }}>
             {/* Primera columna */}

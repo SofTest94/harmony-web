@@ -2,6 +2,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import '../styles/HeaderStyles.scss';
 import { handleScheduleAppointmentClick } from '../../utils/functions';
 import AppBar from '../AppBar';
+import FormModal from '../molecules/FormModal';
+import Chatbot from '../molecules/Chatbot';
 
 // const Header: React.FC = () => {
 interface HeaderProps {
@@ -11,12 +13,23 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ onSelectBranch }) => {
   const [selectedBranch, setSelectedBranch] = useState<string>('México'); // Valor predeterminado
 
+  const [modalOpen, setModalOpen] = useState(false);
+  const textoRef = useRef<HTMLHeadingElement>(null);
+  const textoWidthRef = useRef<number | null>(null);
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
   const handleSelectBranch = (branch: string) => {
     setSelectedBranch(branch);
     onSelectBranch(branch); // Llama a la función pasada desde MainTemplate
   };
-  const textoRef = useRef<HTMLHeadingElement>(null);
-  const textoWidthRef = useRef<number | null>(null);
+  
 
   useEffect(() => {
     setSelectedBranch('México');
@@ -24,7 +37,7 @@ const Header: React.FC<HeaderProps> = ({ onSelectBranch }) => {
       if (textoRef.current) {
         const textoWidth = textoRef.current.getBoundingClientRect().width;
         textoWidthRef.current = textoWidth;
-        console.log('Ancho del texto:', textoWidth);
+        // console.log('Ancho del texto:', textoWidth);
       }
     };
 
@@ -33,6 +46,7 @@ const Header: React.FC<HeaderProps> = ({ onSelectBranch }) => {
     return () => {
       window.removeEventListener('resize', updateTextoWidth);
     };
+
   }, []);
 
   return (
@@ -98,10 +112,12 @@ const Header: React.FC<HeaderProps> = ({ onSelectBranch }) => {
               borderRadius: '5px',
               marginTop: '0.3vw', // Agrega margen superior al botón
             }}
-            onClick={() => handleScheduleAppointmentClick('7711129510', 'Buenas tardes, me gustaria agendar una cita.')}
+            // onClick={() => handleScheduleAppointmentClick('7711129510', 'Buenas tardes, me gustaria agendar una cita.')}
+            onClick={handleModalOpen}
           >
             Agendar cita
           </button>
+          <FormModal open={modalOpen} handleClose={handleModalClose} />
         </div>
       </div>
     </header>
