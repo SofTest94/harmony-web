@@ -14,6 +14,11 @@ import '../styles/HeaderStyles.scss';
 import VideoList from '../molecules/VideoList';
 import SectionVideoList from '../Pages/Body/SectionVideos';
 import Videos from '../Pages/Body/videos';
+import ServiceList from '../Pages/Body/ServiceList';
+import { Link, Typography } from '@mui/material';
+import ReviewUpdate from '../Pages/Body/ReviewUpdate';
+
+
 
 
 // const Body: React.FC = () => {
@@ -57,7 +62,7 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
       <div id="section5">
         <Section5 />
       </div>
-      <div id="section5" style={{marginBottom:10}}>
+      <div id="section6" style={{marginBottom:10}}>
         {/* <SectionVideoList videos={data} /> */}
         {/* <Videos videos={videoData}/> */}
 
@@ -71,11 +76,40 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
           paddingBottom:'5.5vw'
         }}
       >
-        <h1>Echa un vistazo a nuestas terapias</h1>
+        <h1>Echa un vistazo a nuestros videos</h1>
       </div>
         {videoData.map((video, index) => (
         <Videos key={index} title={video.title} description={video.description} url={video.url} />
       ))}
+      
+      <div
+        style={{
+          textAlign: 'right',
+          width: '90%',
+          // margin: '0 auto',
+          fontSize: '2vw', // Tamaño de fuente ajustado al 3.5% del ancho de la ventana
+          minWidth: '80%',
+          paddingTop:'1.5vw'
+        }}
+      >
+        
+        <Link href="https://www.youtube.com/channel/UCiHli8YiB3YalYVsltDFltw" target="_blank" rel="noopener">
+          ver más
+        </Link>
+      
+      </div>
+      </div>
+      <div id="section7">
+        <ServiceList selectedBranch={selectedBranch} />
+      </div>
+      <div id="section7">
+        <ServiceList selectedBranch={selectedBranch} />
+      </div>
+      <div id="section8">
+        {/* <div style={{width:'100%', backgroundColor:'#283E7E'}}> */}
+        <div style={{width:'100%', backgroundColor:'#1976d2'}}>
+        < ReviewUpdate/>
+        </div>
       </div>
     </div>
   );
