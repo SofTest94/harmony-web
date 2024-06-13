@@ -63,7 +63,7 @@ import React, { useState, useEffect } from 'react';
 import { Fab, Tooltip } from '@mui/material';
 import FormModal from './FormModal';
 import '../styles/FloatingButton.scss'; // Importa tus estilos aquí
-import Chatbot from './Chatbot';
+// import Chatbot from './Chatbot';//se elmino esto jms mvp2
 // import floatingButtonImage from '../assets/floating_button_image.png'; // Importa la imagen aquí
 
 const FloatingButton = () => {

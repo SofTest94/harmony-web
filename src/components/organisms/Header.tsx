@@ -3,7 +3,7 @@ import '../styles/HeaderStyles.scss';
 import { handleScheduleAppointmentClick } from '../../utils/functions';
 import AppBar from '../AppBar';
 import FormModal from '../molecules/FormModal';
-import Chatbot from '../molecules/Chatbot';
+// import Chatbot from '../molecules/Chatbot';//se elmino esto jms mvp2
 
 // const Header: React.FC = () => {
 interface HeaderProps {
