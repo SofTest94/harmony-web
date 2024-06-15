@@ -75,8 +75,8 @@ const FloatingButton = () => {
       setIsShaking(true);
       setTimeout(() => {
         setIsShaking(false);
-      }, 5000); // Duración del movimiento: 5 segundos (5000 milisegundos)
-    }, 10000); // Intervalo entre movimientos: 10 segundos (10000 milisegundos)
+      }, 10000); // Duración del movimiento: 5 segundos (5000 milisegundos)
+    }, 3000); // Intervalo entre movimientos: 10 segundos (10000 milisegundos)
 
     return () => clearInterval(shakeInterval);
   }, []);
@@ -98,7 +98,7 @@ const FloatingButton = () => {
           color="primary"
           aria-label="add"
           className={isShaking ? 'shaking-button' : ''}
-          style={{ position: 'fixed', bottom: '20px', right: '20px', backgroundColor: '#00bb2d' }}
+          style={{ position: 'fixed', bottom: '20px', right: '30px', backgroundColor: '#00bb2d', marginBottom:'130px' }}
           onClick={handleModalOpen}
         >
           <img

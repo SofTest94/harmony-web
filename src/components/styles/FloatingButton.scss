@@ -1,22 +1,43 @@
-@keyframes shake {
-    0% {
-      transform: translate(0, 0);
-    }
-    25% {
-      transform: translate(-5px, 0);
-    }
-    50% {
-      transform: translate(5px, 0);
-    }
-    75% {
-      transform: translate(-5px, 0);
-    }
-    100% {
-      transform: translate(0, 0);
-    }
+// @keyframes shake {
+//   0% {
+//     transform: translate(0, 0);
+//   }
+//   25% {
+//     transform: translate(-5px, 0);
+//   }
+//   50% {
+//     transform: translate(5px, 0);
+//   }
+//   75% {
+//     transform: translate(-5px, 0);
+//   }
+//   100% {
+//     transform: translate(0, 0);
+//   }
+// }
+
+@keyframes shadow-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); /* Sin sombra */
   }
-  
-  .shaking-button {
-    animation: shake 0.5s infinite;
+  50% {
+    box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.6); /* Sombras más gruesas */
   }
-  
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); /* Sin sombra */
+  }
+}
+
+.shaking-button {
+  animation: shake 0.5s infinite, shadow-pulse 1.5s infinite;
+}
+
+
+.shaking-button {
+  animation: shake 0.5s infinite, shadow-pulse 1.5s infinite;
+}
+
+
+.shaking-button {
+  animation: shake 0.5s infinite, shadow-pulse 1.5s infinite;
+}
