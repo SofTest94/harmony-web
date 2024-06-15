@@ -144,7 +144,7 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
         <ServiceList selectedBranch={selectedBranch} />
       </div>
       <div id="section8">
-      <div style={{ padding: '5%', margin: '3%', borderRadius: '10px' }}>
+      <div style={{ padding: '5%', margin: '3%' }}>
       <div
         style={{
           textAlign: 'center',
@@ -163,10 +163,15 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Busca lo que quieres saber..."
-          style={{ width: '80%', padding: '1vw', fontSize: '1.3vw' }}
+          style={{ width: '97%', padding: '1vw', fontSize: '1.3vw',
+            borderRadius: '15px',
+            border: '1px solid #ccc', // Borde definido explícitamente
+            boxShadow: 'none', // Asegura que no haya sombra
+
+           }}
         />
       </div>
-      <div style={{ marginBottom: '2vw', overflowY: 'auto', maxHeight: '60vh', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }}>
+      <div style={{ marginBottom: '2vw', overflowY: 'auto', maxHeight: '60vh', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', borderRadius: '15px' }}>
           {filteredQnAList.map((qna, index) => (
             <QuestionAnswer key={index} question={qna.question} answer={qna.answer} />
           ))}
@@ -177,9 +182,18 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
           value={newQuestion}
           onChange={(e) => setNewQuestion(e.target.value)}
           placeholder="¿En que podemos apoyarte?"
-          style={{ width: '80%', padding: '1vw', fontSize: '1.3vw' }}
+          style={{ width: '88%', padding: '1vw', fontSize: '1.3vw',
+            borderRadius: '15px',
+            border: '1px solid #ccc', // Borde definido explícitamente
+            boxShadow: 'none', 
+
+           }}
         />
-        <button onClick={handleAddQuestion} style={{ padding: '1vw', fontSize: '1vw', backgroundColor: '#00D6B2', color: '#fff', border: 'none', borderRadius: '5px', marginLeft: '1vw', cursor: 'pointer' }}>
+        <button onClick={handleAddQuestion} style={{ padding: '1vw', fontSize: '1vw', backgroundColor: '#00D6B2', color: '#fff', marginLeft: '1vw', cursor: 'pointer', 
+          borderRadius: '15px',
+          border: '1px solid #ccc', // Borde definido explícitamente
+          // boxShadow: 'none', // Asegura que no haya sombra
+        }}>
           Preguntar
         </button>
       </div>
