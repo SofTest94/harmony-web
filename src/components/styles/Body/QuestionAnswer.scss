@@ -1,12 +1,17 @@
 .qna-container {
   background-color: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
+  // border: 1px solid #e0e0e0;
+  border-radius: 10px;
   padding: 1.5vw;
-  margin: 1vw 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  // margin: 1vw 0;
+  margin: auto;
+  margin-bottom: 10px;
+  // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
-
+  // background-color: red;
+  margin-top: 10px;
+  
+width: 90%;
   &:hover {
     transform: scale(1.02);
   }
@@ -53,7 +58,7 @@
 
   .qna-question,
   .qna-answer {
-    font-size: 2vw;
+    font-size: 1.5vw;
   }
 
   .qna-input,

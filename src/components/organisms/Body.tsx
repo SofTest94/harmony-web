@@ -84,28 +84,28 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
   );
   return (
     <div style={{ width: '100%' }}>
-      <div id="section1">
+      <div id="section1" style={{paddingTop:'3vw', backgroundColor:'red'}}>
         <Section1 />
       </div>
-      <div id="section2">
+      <div id="section2" style={{paddingTop:'5vw'}}>
         <Section2 selectedBranch={selectedBranch} />
       </div>
-      <div id="section3">
+      <div id="section3" >
         <Section3 />
       </div>
-      <div id="section4">
+      <div id="section4" style={{paddingTop:'1vw'}}>
         <Section4 />
       </div>
-      <div id="section8">
+      <div id="section4">
         {/* <div style={{width:'100%', backgroundColor:'#283E7E'}}> */}
         <div style={{width:'100%', backgroundColor:'#1976d2'}}>
         < ReviewUpdate/>
         </div>
       </div>
-      <div id="section5">
-        <Section5 />
+      <div id="section5" style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }}>
+      <Section5 />
       </div>
-      <div id="section6" style={{marginBottom:10}}>
+      <div id="section6">
         <div
         style={{
           textAlign: 'center',
@@ -113,7 +113,8 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
           margin: '0 auto',
           fontSize: '1.5vw', // Tamaño de fuente ajustado al 3.5% del ancho de la ventana
           minWidth: '70%',
-          paddingBottom:'5.5vw'
+          // paddingBottom:'5.5vw'
+          paddingTop:'5vw'
         }}
       >
         <h1>Echa un vistazo a nuestros videos</h1>
@@ -139,7 +140,7 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
       
       </div>
       </div>
-      <div id="section7">
+      <div id="section7" style={{paddingTop:'3vw'}}>
         <ServiceList selectedBranch={selectedBranch} />
       </div>
       <div id="section8">
@@ -162,10 +163,10 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Busca lo que quieres saber..."
-          style={{ width: '80%', padding: '1vw', fontSize: '1vw' }}
+          style={{ width: '80%', padding: '1vw', fontSize: '1.3vw' }}
         />
       </div>
-      <div style={{ marginBottom: '2vw', overflowY: 'auto', maxHeight: '60vh' }}>
+      <div style={{ marginBottom: '2vw', overflowY: 'auto', maxHeight: '60vh', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }}>
           {filteredQnAList.map((qna, index) => (
             <QuestionAnswer key={index} question={qna.question} answer={qna.answer} />
           ))}
@@ -176,7 +177,7 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
           value={newQuestion}
           onChange={(e) => setNewQuestion(e.target.value)}
           placeholder="¿En que podemos apoyarte?"
-          style={{ width: '80%', padding: '1vw', fontSize: '1vw' }}
+          style={{ width: '80%', padding: '1vw', fontSize: '1.3vw' }}
         />
         <button onClick={handleAddQuestion} style={{ padding: '1vw', fontSize: '1vw', backgroundColor: '#00D6B2', color: '#fff', border: 'none', borderRadius: '5px', marginLeft: '1vw', cursor: 'pointer' }}>
           Preguntar
