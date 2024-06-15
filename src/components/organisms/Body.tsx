@@ -84,7 +84,7 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
   );
   return (
     <div style={{ width: '100%' }}>
-      <div id="section1" style={{paddingTop:'3vw', backgroundColor:'red'}}>
+      <div id="section1" style={{paddingTop:'3vw'}}>
         <Section1 />
       </div>
       <div id="section2" style={{paddingTop:'5vw'}}>
