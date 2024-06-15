@@ -98,7 +98,7 @@ const FloatingButton = () => {
           color="primary"
           aria-label="add"
           className={isShaking ? 'shaking-button' : ''}
-          style={{ position: 'fixed', bottom: '20px', right: '11.5px', backgroundColor: '#00bb2d', marginBottom:'130px' }}
+          style={{ position: 'fixed', bottom: '20px', right: '2%', backgroundColor: '#00bb2d', marginBottom:'130px' }}
           onClick={handleModalOpen}
         >
           <img
