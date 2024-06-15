@@ -10,7 +10,7 @@ import { Reviews } from '../../types/reviews';
 import CardReviewUpdate from '../../molecules/CardReview';
 
 const settings = {
-  dots: true,
+//   dots: true,
   speed: 1800,
   slidesToShow: 3,
   slidesToScroll: 3,

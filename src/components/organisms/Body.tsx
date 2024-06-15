@@ -17,6 +17,11 @@ import Videos from '../Pages/Body/videos';
 import ServiceList from '../Pages/Body/ServiceList';
 import { Link, Typography } from '@mui/material';
 import ReviewUpdate from '../Pages/Body/ReviewUpdate';
+import QuestionAnswer from '../Pages/Body/QuestionAnswer';
+
+
+import { removeDiacritics, isSimilar } from '../../utils/stringUtils';
+
 
 
 
@@ -44,7 +49,39 @@ const videoData = [
   }
 ];
 
+const qnaList = [
+  { question: "¿Cómo funciona el producto?", answer: "El producto funciona de manera eficiente mediante el uso de..." },
+  { question: "¿Cuál es el tiempo de entrega?", answer: "El tiempo de entrega es de aproximadamente 3 a 5 días hábiles." },
+  // Agrega más preguntas y respuestas aquí
+];
+
+
+
+const initialQnAList = [
+  { question: "¿Cómo funciona el producto?", answer: "El producto funciona de manera eficiente mediante el uso de..." },
+  { question: "¿Cuál es el tiempo de entrega?", answer: "El tiempo de entrega es de aproximadamente 3 a 5 días hábiles." },
+  // Agrega más preguntas y respuestas aquí
+];
+
+
 const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
+  const [qnaList, setQnaList] = useState(initialQnAList);
+  const [newQuestion, setNewQuestion] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+
+
+  const handleAddQuestion = () => {
+    if (newQuestion.trim()) {
+      setQnaList([...qnaList, { question: newQuestion, answer: '' }]);
+      setNewQuestion('');
+    }
+  };
+
+  const filteredQnAList = qnaList.filter(
+    (qna) => 
+      isSimilar(removeDiacritics(qna.question.toLowerCase()), removeDiacritics(searchTerm.toLowerCase())) ||
+      isSimilar(removeDiacritics(qna.answer.toLowerCase()), removeDiacritics(searchTerm.toLowerCase()))
+  );
   return (
     <div style={{ width: '100%' }}>
       <div id="section1">
@@ -59,13 +96,16 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
       <div id="section4">
         <Section4 />
       </div>
+      <div id="section8">
+        {/* <div style={{width:'100%', backgroundColor:'#283E7E'}}> */}
+        <div style={{width:'100%', backgroundColor:'#1976d2'}}>
+        < ReviewUpdate/>
+        </div>
+      </div>
       <div id="section5">
         <Section5 />
       </div>
       <div id="section6" style={{marginBottom:10}}>
-        {/* <SectionVideoList videos={data} /> */}
-        {/* <Videos videos={videoData}/> */}
-
         <div
         style={{
           textAlign: 'center',
@@ -102,17 +142,52 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
       <div id="section7">
         <ServiceList selectedBranch={selectedBranch} />
       </div>
-      <div id="section7">
-        <ServiceList selectedBranch={selectedBranch} />
-      </div>
       <div id="section8">
-        {/* <div style={{width:'100%', backgroundColor:'#283E7E'}}> */}
-        <div style={{width:'100%', backgroundColor:'#1976d2'}}>
-        < ReviewUpdate/>
+      <div style={{ padding: '5%', margin: '3%', borderRadius: '10px' }}>
+      <div
+        style={{
+          textAlign: 'center',
+          width: '70%',
+          margin: '0 auto',
+          fontSize: '1.5vw', // Tamaño de fuente ajustado al 3.5% del ancho de la ventana
+          minWidth: '70%',
+        }}
+      >
+        <h1>Preguntas y respuestas</h1>
+      </div>
+      
+      <div style={{ marginBottom: '2vw' }}>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Busca lo que quieres saber..."
+          style={{ width: '80%', padding: '1vw', fontSize: '1vw' }}
+        />
+      </div>
+      <div style={{ marginBottom: '2vw', overflowY: 'auto', maxHeight: '60vh' }}>
+          {filteredQnAList.map((qna, index) => (
+            <QuestionAnswer key={index} question={qna.question} answer={qna.answer} />
+          ))}
         </div>
+      <div style={{ marginTop: '2vw' }}>
+        <input
+          type="text"
+          value={newQuestion}
+          onChange={(e) => setNewQuestion(e.target.value)}
+          placeholder="¿En que podemos apoyarte?"
+          style={{ width: '80%', padding: '1vw', fontSize: '1vw' }}
+        />
+        <button onClick={handleAddQuestion} style={{ padding: '1vw', fontSize: '1vw', backgroundColor: '#00D6B2', color: '#fff', border: 'none', borderRadius: '5px', marginLeft: '1vw', cursor: 'pointer' }}>
+          Preguntar
+        </button>
+      </div>
+      </div>
       </div>
     </div>
   );
 };
 
 export default Body;
+
+

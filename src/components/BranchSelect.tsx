@@ -35,9 +35,10 @@ const BranchSelect: React.FC<BranchSelectProps> = ({ onSelect }) => {
         aria-expanded={anchorEl ? 'true' : undefined}
         onClick={handleClick}
         // Aplicamos un estilo para asegurar que el texto sea visible
-        sx={{ color: 'inherit', fontWeight: 'bold' }}
+        sx={{ color: 'inherit', fontWeight: 'bold', fontSize: '1.5vw', fontFamily: 'Arial, sans-serif', alignContent:'start', marginLeft:'50vw' }}
+
       >
-        SUCURSAL: {selectedBranch || 'México'}
+        Sucursal: {selectedBranch || 'México'}
       </Button>
       <Menu
         id="branch-menu"
@@ -46,6 +47,10 @@ const BranchSelect: React.FC<BranchSelectProps> = ({ onSelect }) => {
         onClose={handleClose}
         MenuListProps={{
           'aria-labelledby': 'branch-button',
+        }}
+        style={{
+          fontSize:'2vw',
+          
         }}
       >
         <MenuItem onClick={() => handleMenuItemClick('México')}>México</MenuItem>
