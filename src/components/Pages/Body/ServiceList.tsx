@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import '../../styles/Body/Section2.scss';
 import CardServiceType from '../../molecules/CardServiceType';
 import { Treatments } from '../../types/treatments';
-import { treatmentsServices } from '../../services/treatments';
+import { serviceServices } from '../../services/service';
 
 // const Section2: React.FC = () => {
 interface Section2Props {
@@ -17,7 +17,7 @@ const ServiceList: React.FC<Section2Props> = ({ selectedBranch }) => {
     // Llama al servicio para obtener los datos
     async function fetchImagesTexts() {
       try {
-        const data = await treatmentsServices.getAllTreatments(''); // Llama a la función del servicio
+        const data = await serviceServices.getAllServices(''); // Llama a la función del servicio
         setImagesTexts(data); // Actualiza el estado con los datos recibidos del servicio
       } catch (error) {
         console.error('Error fetching images texts:', error);

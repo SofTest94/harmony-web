@@ -93,16 +93,16 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
       <div id="section3" >
         <Section3 />
       </div>
-      <div id="section4" style={{paddingTop:'1vw'}}>
+      {/* <div id="section4" style={{paddingTop:'1vw'}}>
         <Section4 />
-      </div>
-      <div id="section4">
+      </div> */}
+      <div id="section4" style={{paddingTop:'1.8vw'}}>
         {/* <div style={{width:'100%', backgroundColor:'#283E7E'}}> */}
         <div style={{width:'100%', backgroundColor:'#1976d2'}}>
         < ReviewUpdate/>
         </div>
       </div>
-      <div id="section5" style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }}>
+      <div id="section5" style={{ boxShadow: '0 1px 3px rgba(0, 0, 0, 0.10)' }}>
       <Section5 />
       </div>
       <div id="section6">
