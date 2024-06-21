@@ -2,36 +2,15 @@ import React, { useRef, useEffect, useState } from 'react';
 import '../styles/HeaderStyles.scss';
 import { handleScheduleAppointmentClick, handleSocialMediaClick } from '../../utils/functions';
 import FormModal from '../molecules/FormModal';
+import { Branches } from '../types/branches';
 
+interface BodyProps {
+  selectedBranch: Branches | null; 
+}
 
-const Footer: React.FC = () => {
+  const Footer: React.FC<BodyProps> = ({ selectedBranch }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  // const textoRef = useRef<HTMLHeadingElement>(null);
-
-  // const handleAgendarCitaClick = () => {
-  //   const telefono = '7711129510';
-  //   const mensaje = encodeURIComponent('Hola, me gustaría agendar una cita.');
-  //   const url = `https://wa.me/${telefono}?text=${mensaje}`;
-  //   window.open(url, '_blank');
-  // };
-  /*
-const handleFacebookClick = () => {
-//   handleSocialMediaClick('https://www.facebook.com');
-// };
-
-// const handleYouTubeClick = () => {
-//   handleSocialMediaClick('https://www.youtube.com');
-// };
-
-// const handleTikTokClick = () => {
-//   handleSocialMediaClick('https://www.tiktok.com');
-// };
-
-// const handleInstagramClick = () => {
-//   handleSocialMediaClick('https://www.instagram.com');
-// };
-
-*/
+  
   const handleModalOpen = () => {
     setModalOpen(true);
   };
@@ -67,6 +46,25 @@ const handleFacebookClick = () => {
     // Esta parte del código no ha cambiado
     // ...
   }, []);
+
+
+  function formatPhoneNumber(phoneNumber?: string) {
+    // Eliminamos todos los caracteres que no sean dígitos
+    const cleaned = ('' + phoneNumber).replace(/\D/g, '');
+  
+    // Dividimos el número en pares de dígitos
+    const match = cleaned.match(/\d{1,2}/g);
+  
+    if (match) {
+      // Unimos los pares de dígitos con un espacio entre cada par
+      return match.join(' ');
+    }
+  
+    // Si no coincide con ningún patrón esperado, retornamos el número original
+    return phoneNumber;
+  }
+  
+  
 
   return (
     <div style={{ position: 'relative', width: '100%', height: 'auto' }}>
@@ -128,7 +126,8 @@ const handleFacebookClick = () => {
               <img src="/LogoHarmony.png" alt="Descripción de la imagen" style={{ width: '70%' }} />
               {/* Texto */}
               <p style={{ fontSize: '1.5vw', marginTop: '1vw' }}>
-                Plaza Juárez 8 Centro, San Juan Teotihuacan, EDO. de México
+                {selectedBranch?.name} {selectedBranch?.number} {selectedBranch?.city} {selectedBranch?.name}, {selectedBranch?.municipality}, {selectedBranch?.state}
+                {/* Plaza Juárez 8 Centro, San Juan Teotihuacan, EDO. de México */}
               </p>
             </div>
             {/* Segunda columna */}
@@ -174,7 +173,7 @@ const handleFacebookClick = () => {
                 />
               </div>
 
-              <p style={{ fontSize: '1.5vw', marginTop: '2.5vw' }}>+55 7687 703 harmonytherapy.ht@gmail.com</p>
+              <p style={{ fontSize: '1.5vw', marginTop: '2.5vw' }}>{formatPhoneNumber(selectedBranch?.phone)} harmonytherapy.ht@gmail.com</p>
             </div>
           </div>
         </div>

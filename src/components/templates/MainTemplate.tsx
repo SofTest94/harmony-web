@@ -19,10 +19,8 @@ const MainTemplate: React.FC = () => {
       <Header onSelectBranch={handleSelectBranch} />
       
       <Body selectedBranch={selectedBranch} />
-      {/* <Body selectedBranch={function (branch: Branches): Branches {
-        return branch;
-      } } /> */}
-      <Footer />
+      
+      <Footer selectedBranch={selectedBranch} />
       <FloatingButton />
       <Chatbot/>
     </>
