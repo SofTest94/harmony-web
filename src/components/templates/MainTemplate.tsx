@@ -4,12 +4,14 @@ import Footer from '../organisms/Footer';
 import Body from '../organisms/Body';
 import FloatingButton from '../molecules/FloatingButton';
 import Chatbot from '../molecules/Chatbot';//se elmino esto jms mvp2
+import { Branches } from '../types/branches';
 
 const MainTemplate: React.FC = () => {
-  const [selectedBranch, setSelectedBranch] = useState<string>('México');
+  const [selectedBranch, setSelectedBranch] = useState<Branches | null>(null); // Inicializa con null o algún valor predeterminado
 
-  const handleSelectBranch = (branch: string) => {
-    setSelectedBranch(branch);
+
+  const handleSelectBranch = (branches: Branches) => {
+    setSelectedBranch(branches);
   };
 
   return (
@@ -17,6 +19,9 @@ const MainTemplate: React.FC = () => {
       <Header onSelectBranch={handleSelectBranch} />
       
       <Body selectedBranch={selectedBranch} />
+      {/* <Body selectedBranch={function (branch: Branches): Branches {
+        return branch;
+      } } /> */}
       <Footer />
       <FloatingButton />
       <Chatbot/>

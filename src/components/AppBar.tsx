@@ -133,9 +133,10 @@ import React, { useState } from 'react';
 import { AppBar as MuiAppBar, Toolbar, Typography, Menu, MenuItem, IconButton } from '@mui/material';
 import { styled } from '@mui/system';
 import BranchSelect from './BranchSelect';
+import { Branches } from './types/branches';
 
 interface AppBarProps {
-  onSelectBranch: (branch: string) => void;
+  onSelectBranch: (branch: Branches) => void;
 }
 
 const AppBarRoot = styled('div')({

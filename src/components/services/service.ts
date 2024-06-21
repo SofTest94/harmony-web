@@ -39,7 +39,7 @@ async function updateById(id: string, body: UpdateServices, bearerToken: string)
   return response;
 }
 
-async function getAllServices(token: string): Promise<Services[]> {
+async function getAllServices(token?: string): Promise<Services[]> {
   try {
     const response = await HarmonyApi.get<any>('services', {
       headers: { Authorization: 'Bearer ' + token },

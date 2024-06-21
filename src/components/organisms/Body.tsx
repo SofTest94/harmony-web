@@ -21,15 +21,18 @@ import QuestionAnswer from '../Pages/Body/QuestionAnswer';
 
 
 import { removeDiacritics, isSimilar } from '../../utils/stringUtils';
+import { Branches } from '../types/branches';
 
 
 
 
 
 // const Body: React.FC = () => {
-interface BodyProps {
-  selectedBranch: string;
-}
+  interface BodyProps {
+    selectedBranch: Branches | null; // Tipo de la prop selectedBranch
+  }
+
+
 
 const videoData = [
   {
@@ -65,6 +68,7 @@ const initialQnAList = [
 
 
 const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
+  console.log()
   const [qnaList, setQnaList] = useState(initialQnAList);
   const [newQuestion, setNewQuestion] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -141,8 +145,9 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
       </div>
       </div>
       <div id="section7" style={{paddingTop:'3vw'}}>
-        <ServiceList selectedBranch={selectedBranch} />
+        <ServiceList selectedBranch={selectedBranch}  />
       </div>
+    
       <div id="section8">
       <div style={{ padding: '5%', margin: '3%' }}>
       <div
