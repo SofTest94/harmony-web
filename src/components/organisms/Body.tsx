@@ -68,7 +68,6 @@ const initialQnAList = [
 
 
 const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
-  console.log()
   const [qnaList, setQnaList] = useState(initialQnAList);
   const [newQuestion, setNewQuestion] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -92,10 +91,11 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
         <Section1 />
       </div>
       <div id="section2" style={{paddingTop:'5vw'}}>
-        <Section2 selectedBranch={selectedBranch} />
+        {/* <Section2 selectedBranch={selectedBranch} /> */}
+        {selectedBranch!== null && <Section2 selectedBranch={selectedBranch} />}
       </div>
-      <div id="section3" >
-        <Section3 />
+      <div id="section3">
+        {selectedBranch!== null && <Section3 branchId={selectedBranch?._id} />}
       </div>
       {/* <div id="section4" style={{paddingTop:'1vw'}}>
         <Section4 />

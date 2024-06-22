@@ -39,7 +39,6 @@ interface BodyProps {
         handleSocialMediaClick('https://www.tiktok.com/@harmony.therapy?_t=8mFfoYgCbED&_r=1');
         break;
     }
-    console.log('click!!');
   };
 
   useEffect(() => {
@@ -126,7 +125,7 @@ interface BodyProps {
               <img src="/LogoHarmony.png" alt="Descripción de la imagen" style={{ width: '70%' }} />
               {/* Texto */}
               <p style={{ fontSize: '1.5vw', marginTop: '1vw' }}>
-                {selectedBranch?.name} {selectedBranch?.number} {selectedBranch?.city} {selectedBranch?.name}, {selectedBranch?.municipality}, {selectedBranch?.state}
+                {selectedBranch?.name} {selectedBranch?.number} {selectedBranch?.city}, {selectedBranch?.municipality}, {selectedBranch?.state}
                 {/* Plaza Juárez 8 Centro, San Juan Teotihuacan, EDO. de México */}
               </p>
             </div>

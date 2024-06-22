@@ -13,12 +13,12 @@ async function createUser(data: CreateUsers, token: string): Promise<any> {
       }
     }
 
-    console.log(JSON.stringify(modifiedUserInfo));
+    // console.log(JSON.stringify(modifiedUserInfo));
     const response = await HarmonyApi.post<any>('users/', modifiedUserInfo, {
       headers: { Authorization: 'Bearer ' + token },
     });
 
-    console.log(response);
+    // console.log(response);
     return response.data;
   } catch (e) {
     throw new Error(JSON.stringify(e));
@@ -36,6 +36,51 @@ async function updateById(id: string, body: UpdateUsers, bearerToken: string): P
     }
   );
   return response;
+}
+
+async function getAllUsersByIdBranch(idBranch: string, token: string, page: number, perPage: number): Promise<Users[]> {
+  try {
+    console.log('si entra')
+    const params = {
+      page: page,
+      perPage: perPage,
+    };
+
+
+    const response = await HarmonyApi.get<any>('users/'+idBranch, {
+      params,
+      headers: { Authorization: 'Bearer ' + token },
+    });
+
+    console.log('***USER****')
+    console.log({response})
+    console.log('***END****')
+
+    if(response){
+      const formattedData = response.data.map((item: any) => ({
+        user: {
+          _id: item.user._id,
+          firstName: item.user.firstName,
+          lastName: item.user.lastName,
+          middleName: item.user.middleName,
+          gender: item.user.gender,
+          birthday: item.user.birthday,
+          fullName: item.user.fullName,
+          idSpecialty: item.user.idSpecialty,
+          idBranch: item.user.idBranch,
+          idRol: item.user.idRol,
+          photo: item.user.photo,
+          specialty: item.specialtyName,
+        },
+      }));
+      const transformedResponse = formattedData.map((item: { user: any }) => item.user);
+      return transformedResponse;
+    }else{
+      return[]
+    }
+  } catch (e) {
+    throw new Error(JSON.stringify(e));
+  }
 }
 
 async function getAllUsers(idCompany: string, token: string, page: number, perPage: number): Promise<Users[]> {
@@ -91,4 +136,5 @@ export const userServices = {
   createUser,
   updateById,
   deleteUser,
+  getAllUsersByIdBranch
 };

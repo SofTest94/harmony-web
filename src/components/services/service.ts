@@ -14,12 +14,12 @@ async function createService(data: CreateServices, token: string): Promise<any> 
       }
     }
 
-    console.log(JSON.stringify(modifiedUserInfo));
+    // console.log(JSON.stringify(modifiedUserInfo));
     const response = await HarmonyApi.post<any>('services/', modifiedUserInfo, {
       headers: { Authorization: 'Bearer ' + token },
     });
 
-    console.log(response);
+    // console.log(response);
     return response.data;
   } catch (e) {
     throw new Error(JSON.stringify(e));
@@ -39,13 +39,27 @@ async function updateById(id: string, body: UpdateServices, bearerToken: string)
   return response;
 }
 
+async function getAllServicesByIdBranch(idBranch: string, token?: string): Promise<Services[]> {
+  try {
+    const response = await HarmonyApi.get<any>('services/'+idBranch, {
+      headers: { Authorization: 'Bearer ' + token },
+    });
+
+    // console.log(response);
+
+    return response && response.data;
+  } catch (e) {
+    throw new Error(JSON.stringify(e));
+  }
+}
+
 async function getAllServices(token?: string): Promise<Services[]> {
   try {
     const response = await HarmonyApi.get<any>('services', {
       headers: { Authorization: 'Bearer ' + token },
     });
 
-    console.log(response);
+    // console.log(response);
 
     return response && response.data;
   } catch (e) {
@@ -69,4 +83,5 @@ export const serviceServices = {
   createService,
   updateById,
   deleteServices,
+  getAllServicesByIdBranch
 };

@@ -73,8 +73,13 @@ const ServiceList: React.FC<Section2Props> = ({ selectedBranch }) => {
     // Función para llamar al servicio y obtener los datos de servicios
     async function fetchImagesTexts() {
       try {
-        const data = await serviceServices.getAllServices(selectedBranch?.name); // Llama a la función del servicio
-        setImagesTexts(data); // Actualiza el estado con los datos recibidos del servicio
+        if (selectedBranch) {
+          // Llama al servicio para obtener los datos de tratamientos específicos de la sucursal seleccionada
+          const data = await serviceServices.getAllServicesByIdBranch(selectedBranch._id);
+          setImagesTexts(data); // Actualiza el estado con los datos recibidos del servicio
+        }
+        
+        
       } catch (error) {
         console.error('Error fetching service texts:', error);
       }
@@ -88,7 +93,7 @@ const ServiceList: React.FC<Section2Props> = ({ selectedBranch }) => {
       <div className="churrito">
         <div className="title-container">
           <h1 className="title">
-            Servicios que ofrecemos para ti: {selectedBranch?.name}
+            Servicios que ofrecemos para ti
           </h1>
         </div>
         <div className="image-text-container">

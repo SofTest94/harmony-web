@@ -13,12 +13,11 @@ async function createReview(data: CreateReviews, token: string): Promise<any> {
       }
     }
 
-    console.log(JSON.stringify(modifiedUserInfo));
+    
     const response = await HarmonyApi.post<any>('reviews/', modifiedUserInfo, {
       headers: { Authorization: 'Bearer ' + token },
     });
 
-    console.log(response);
     return response.data;
   } catch (e) {
     throw new Error(JSON.stringify(e));
@@ -44,7 +43,7 @@ async function getAllReviews(token: string): Promise<Reviews[]> {
       headers: { Authorization: 'Bearer ' + token },
     });
 
-    console.log(response);
+    // console.log(response);
     // const formattedData = response.data.map((item: any) => ({
     //   user: {
     //     _id: item.user._id,

@@ -84,7 +84,7 @@ const Section2: React.FC<Section2Props> = ({ selectedBranch }) => {
       try {
         if (selectedBranch) {
           // Llama al servicio para obtener los datos de tratamientos específicos de la sucursal seleccionada
-          const data = await treatmentsServices.getAllTreatments(selectedBranch.name);
+          const data = await treatmentsServices.getAllTreatmentsByIdBranch(selectedBranch._id);
           setImagesTexts(data); // Actualiza el estado con los datos recibidos del servicio
           setBranchName(selectedBranch.name); // Establece el nombre de la sucursal seleccionada
         }
@@ -100,7 +100,7 @@ const Section2: React.FC<Section2Props> = ({ selectedBranch }) => {
     <div className="churrito">
       <div className="title-container">
         <h1 className="title">
-          Es por ello que en Harmony nosotros te guiamos en cada paso hacia tu libertad tratando lesiones como: {branchName}
+          Es por ello que en Harmony nosotros te guiamos en cada paso hacia tu libertad tratando lesiones como:
         </h1>
       </div>
       <div className="image-text-container">

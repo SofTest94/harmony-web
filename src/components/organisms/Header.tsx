@@ -160,9 +160,7 @@ const Header: React.FC<HeaderProps> = ({ onSelectBranch }) => {
   };
 
   const handleSelectBranch = (branch: Branches) => {
-    console.log('*****BEGIN******')
-    console.log({branch})
-    console.log('*****END******')
+    
     setSelectedBranch(branch);
     onSelectBranch(branch); // Llama a la función pasada desde MainTemplate
   };

@@ -1,5 +1,6 @@
 import { CreateTreatments, Treatments, UpdateTreatments } from '../../components/types/treatments';
 import HarmonyApi from './config';
+// localhost:3000/treatments/6676148765b0352e37e7e462
 
 //https://develop.d2z36kd8bp7vmy.amplifyapp.com/employees - crear
 async function createTreatments(data: CreateTreatments, token: string): Promise<any> {
@@ -13,12 +14,12 @@ async function createTreatments(data: CreateTreatments, token: string): Promise<
       }
     }
 
-    console.log(JSON.stringify(modifiedUserInfo));
+    // console.log(JSON.stringify(modifiedUserInfo));
     const response = await HarmonyApi.post<any>('treatments/', modifiedUserInfo, {
       headers: { Authorization: 'Bearer ' + token },
     });
 
-    console.log(response);
+    // console.log(response);
     return response.data;
   } catch (e) {
     throw new Error(JSON.stringify(e));
@@ -37,33 +38,24 @@ async function updateById(id: string, body: UpdateTreatments, bearerToken: strin
   );
   return response;
 }
+// localhost:3000/treatments/6676148765b0352e37e7e462
+async function getAllTreatmentsByIdBranch(idBranch: string, token?: string): Promise<Treatments[]> {
+  try {
+    const response = await HarmonyApi.get<any>('treatments/'+idBranch, {
+      headers: { Authorization: 'Bearer ' + token },
+    });
+    return response && response.data;
+  } catch (e) {
+    throw new Error(JSON.stringify(e));
+  }
+}
+
 
 async function getAllTreatments(token: string): Promise<Treatments[]> {
   try {
     const response = await HarmonyApi.get<any>('treatments', {
       headers: { Authorization: 'Bearer ' + token },
     });
-
-    console.log(response);
-    // const formattedData = response.data.map((item: any) => ({
-    //   user: {
-    //     _id: item.user._id,
-    //     firstName: item.user.firstName,
-    //     lastName: item.user.lastName,
-    //     middleName: item.user.middleName,
-    //     gender: item.user.gender,
-    //     birthday: item.user.birthday,
-    //     fullName: item.user.fullName,
-    //     idSpecialty: item.user.idSpecialty,
-    //     idBranch: item.user.idBranch,
-    //     idRol: item.user.idRol,
-    //     photo: item.user.photo,
-    //     specialty: item.specialtyName,
-    //   },
-    // }));
-    // console.log(JSON.stringify(formattedData));
-    // const transformedResponse = formattedData.map((item: { user: any }) => item.user);
-
     return response && response.data;
   } catch (e) {
     throw new Error(JSON.stringify(e));
@@ -86,4 +78,5 @@ export const treatmentsServices = {
   createTreatments,
   updateById,
   deleteTreatments,
+  getAllTreatmentsByIdBranch
 };

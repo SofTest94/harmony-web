@@ -26,7 +26,7 @@ const FormModal: React.FC<FormModalProps> = ({ open, handleClose }) => {
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleSubmit = () => {
-    console.log(firstName, lastName, selectedOption);
+    // console.log(firstName, lastName, selectedOption);
     handleScheduleAppointmentClick(
       '5576877703',
       `Hola!, Soy ${firstName} ${lastName} y me gustaría obtener más información sobre ${

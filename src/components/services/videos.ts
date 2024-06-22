@@ -6,12 +6,12 @@ async function createVideos(data: CreateVideos, token: string): Promise<any> {
   try {
     const modifiedUserInfo = { ...data };
 
-    console.log(JSON.stringify(modifiedUserInfo));
+    // console.log(JSON.stringify(modifiedUserInfo));
     const response = await HarmonyApi.post<any>('videos/', modifiedUserInfo, {
       headers: { Authorization: 'Bearer ' + token },
     });
 
-    console.log(response);
+    // console.log(response);
     return response.data;
   } catch (e) {
     throw new Error(JSON.stringify(e));
@@ -37,7 +37,7 @@ async function getAllVideos(token: string): Promise<Videos[]> {
       headers: { Authorization: 'Bearer ' + token },
     });
 
-    console.log(response);
+    // console.log(response);
 
     return response && response.data;
   } catch (e) {
