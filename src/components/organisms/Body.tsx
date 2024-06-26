@@ -22,6 +22,8 @@ import QuestionAnswer from '../Pages/Body/QuestionAnswer';
 
 import { removeDiacritics, isSimilar } from '../../utils/stringUtils';
 import { Branches } from '../types/branches';
+import { videosServices } from '../services/videos';
+import { VideosType } from '../types/videosType';
 
 
 
@@ -71,6 +73,23 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
   const [qnaList, setQnaList] = useState(initialQnAList);
   const [newQuestion, setNewQuestion] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+
+  const [videoItems, setVideoItems] = useState<VideosType[]>([]);
+
+  useEffect(() => {
+    // Llama al servicio para obtener los datos
+    async function fetchImagesTexts() {
+      try {
+        const data = await videosServices.getAllVideos(''); // Llama a la función del servicio
+        console.log(JSON.stringify(data))
+        setVideoItems(data); // Actualiza el estado con los datos recibidos del servicio
+      } catch (error) {
+        console.error('Error fetching images texts:', error);
+      }
+    }
+
+    fetchImagesTexts(); // Llama a la función de carga al montar el componente
+  }, []);
 
 
   const handleAddQuestion = () => {
@@ -123,8 +142,8 @@ const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
       >
         <h1>Echa un vistazo a nuestros videos</h1>
       </div>
-        {videoData.map((video, index) => (
-        <Videos key={index} title={video.title} description={video.description} url={video.url} />
+      {videoItems && videoData[0].url !== undefined && videoItems.map((video, index) => (
+        <Videos key={index} title={video.title} description={video.description} url_video={video.urlVideo} />
       ))}
       
       <div

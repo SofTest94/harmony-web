@@ -14,6 +14,7 @@ interface VideoListProps {
 
 // Función para convertir la URL de YouTube a la URL de inserción
 const getEmbedUrl = (url: string): string => {
+  console.log({url})
   const videoId = url.split('v=')[1]?.split('&')[0];
   return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
 };

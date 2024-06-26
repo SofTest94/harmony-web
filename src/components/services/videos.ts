@@ -1,4 +1,4 @@
-import { CreateVideos, Videos, UpdateVideos } from '../../components/types/videos';
+import { CreateVideos, VideosType, UpdateVideos } from '../../components/types/videosType';
 import HarmonyApi from './config';
 
 //https://develop.d2z36kd8bp7vmy.amplifyapp.com/employees - crear
@@ -31,7 +31,7 @@ async function updateById(id: string, body: UpdateVideos, bearerToken: string): 
   return response;
 }
 
-async function getAllVideos(token: string): Promise<Videos[]> {
+async function getAllVideos(token: string): Promise<VideosType[]> {
   try {
     const response = await HarmonyApi.get<any>('videos', {
       headers: { Authorization: 'Bearer ' + token },

@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/Body/videos.scss';
+
 
 interface VideoProps {
   title: string;
   description: string;
-  url: string;
+  url_video: string;
 }
 
 const getEmbedUrl = (url: string): string => {
-  const videoId = url.split('v=')[1]?.split('&')[0];
-  return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+  
+  if(url!==undefined){
+    const videoId = url.split('v=')[1]?.split('&')[0];
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+  }else{
+    return ""
+  }
+  
 };
 
-const Video: React.FC<VideoProps> = ({ title, description, url }) => {
+const Video: React.FC<VideoProps> = ({ title, description, url_video }) => {
   return (
     <div className="section-container-videos">
       <div className="section-content-videos">
@@ -25,7 +32,7 @@ const Video: React.FC<VideoProps> = ({ title, description, url }) => {
         <div className="section-image-videos">
           <iframe
             className='image-videos'
-            src={getEmbedUrl(url)}
+            src={getEmbedUrl(url_video)}
             title={title}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -1,0 +1,634 @@
+// import React, { useEffect, useState } from 'react';
+// import Button from '../atoms/Button';
+// import Slider from 'react-slick';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
+// import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+// import { data_carrusel, imagesTexts } from '../../utils/utils';
+// import Section1 from '../Pages/Body/Section1';
+// import Section2 from '../Pages/Body/Section2';
+// import Section3 from '../Pages/Body/Section3';
+// import Section4 from '../Pages/Body/Section4';
+// import Section5 from '../Pages/Body/Section5';
+// import '../styles/HeaderStyles.scss';
+// import VideoList from '../molecules/VideoList';
+// import SectionVideoList from '../Pages/Body/SectionVideos';
+// import Videos from '../Pages/Body/videos';
+// import ServiceList from '../Pages/Body/ServiceList';
+// import { Link, Typography } from '@mui/material';
+// import ReviewUpdate from '../Pages/Body/ReviewUpdate';
+// import QuestionAnswer from '../Pages/Body/QuestionAnswer';
+
+
+// import { removeDiacritics, isSimilar } from '../../utils/stringUtils';
+// import { Branches } from '../types/branches';
+// import SkeletonSection2 from '../Pages/Skeleton/SkeletonSection2';
+// import YouTube from '../molecules/Skeleton';
+// import { questionsServices } from '../services/questions';
+// import { videosServices } from '../services/videos';
+// import { Questions } from '../types/questions';
+// import { VideosType } from '../types/videosType';
+
+
+
+
+
+// // const Body: React.FC = () => {
+//   interface BodyProps {
+//     selectedBranch: Branches | null; // Tipo de la prop selectedBranch
+//   }
+
+// const qnaList = [
+//   { question: "¿Cómo funciona el producto?", answer: "El producto funciona de manera eficiente mediante el uso de..." },
+//   { question: "¿Cuál es el tiempo de entrega?", answer: "El tiempo de entrega es de aproximadamente 3 a 5 días hábiles." },
+//   // Agrega más preguntas y respuestas aquí
+// ];
+
+
+
+// const initialQnAList = [
+//   { question: "¿Cómo funciona el producto?", answer: "El producto funciona de manera eficiente mediante el uso de..." },
+//   { question: "¿Cuál es el tiempo de entrega?", answer: "El tiempo de entrega es de aproximadamente 3 a 5 días hábiles." },
+//   // Agrega más preguntas y respuestas aquí
+// ];
+
+
+// const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
+//   const [qnaList, setQnaList] = useState(initialQnAList);
+//   const [newQuestion, setNewQuestion] = useState('');
+//   const [searchTerm, setSearchTerm] = useState('');
+
+//     const [questionData, setDataQuestion] = useState<Questions[]>([]); // Estado para almacenar los datos de tratamientos
+//   const [videoData, setVideoData] = useState<VideosType[]>([]); // Estado para almacenar los datos de tratamientos
+
+//     const [filteredQnAList, setFilteredQnAList] = useState(initialQnAList); // Estado para almacenar la lista filtrada
+
+
+//   useEffect(() => {
+//         const fetchQnAList = async () => {
+
+//           try {
+//             // Simulamos una llamada a la API con un delay de 1 segundo
+//             await new Promise(resolve => setTimeout(resolve, 1000));
+//             // Aquí realizarías la llamada real a tu API para obtener las preguntas y respuestas
+//             // Supongamos que obtienes la data de algún servicio o endpoint
+//             // Aquí simplemente establecemos una lista de ejemplo para demostración
+//             const exampleQnAList = [
+//               { question: "¿Cómo puedo devolver un producto?", answer: "Puedes devolver un producto siguiendo estos pasos..." },
+//               { question: "¿Cuáles son las opciones de pago?", answer: "Aceptamos tarjetas de crédito, PayPal y transferencias bancarias." },
+//               { question: "¿Puedo cancelar mi pedido?", answer: "Sí, puedes cancelar tu pedido antes de que sea enviado." },
+//               { question: "¿Cuál es la política de garantía?", answer: "Ofrecemos una garantía de 1 año para todos nuestros productos." }
+//               // Agrega más preguntas y respuestas aquí
+//             ];
+//             // Llama al servicio para obtener los datos de tratamientos específicos de la sucursal seleccionada
+//             const dataQuestions = await questionsServices.getAllQuestions('');
+//             const dataVideos = await videosServices.getAllVideos('');
+
+//             setDataQuestion(dataQuestions); // Actualiza el estado con los datos recibidos del servicio
+//             setVideoData(dataVideos); // Actualiza el estado con los datos recibidos del servicio
+
+
+
+//             setQnaList(exampleQnAList); // Establecemos la lista completa
+//             setFilteredQnAList(exampleQnAList); // También la lista filtrada inicialmente
+
+//           } catch (error) {
+//             console.error('Error fetching Q&A data:', error);
+
+//           }
+//         };
+
+//         fetchQnAList();
+//       }, []);
+
+
+//   const handleAddQuestion = () => {
+//     if (newQuestion.trim()) {
+//       setQnaList([...qnaList, { question: newQuestion, answer: '' }]);
+//       setNewQuestion('');
+//     }
+//   };
+
+//   // const filteredQnAList = qnaList.filter(
+//   //   (qna) =>
+//   //     isSimilar(removeDiacritics(qna.question.toLowerCase()), removeDiacritics(searchTerm.toLowerCase())) ||
+//   //     isSimilar(removeDiacritics(qna.answer.toLowerCase()), removeDiacritics(searchTerm.toLowerCase()))
+//   // );
+//   return (
+//     <div style={{ width: '100%' }}>
+//       <div id="section1" style={{paddingTop:'3vw'}}>
+//         <Section1 />
+//       </div>
+//       <div id="section2" style={{paddingTop:'5vw'}}>
+
+//       {selectedBranch!== null && <Section2 selectedBranch={selectedBranch} />}
+//       </div>
+//       <div id="section3">
+//         {selectedBranch!== null && <Section3 branchId={selectedBranch?._id} />}
+//       </div>
+//       <div id="section2" style={{ paddingTop: '5vw' }}>
+
+//     {/* <Skeleton/> */}
+
+//   </div>
+//       <div id="section2" style={{ paddingTop: '5vw' }}>
+//     <Section2 selectedBranch={selectedBranch} />
+
+//   </div>
+
+//       {/* <div id="section4" style={{paddingTop:'1vw'}}>
+//         <Section4 />
+//       </div> */}
+//       <div id="section4" style={{paddingTop:'1.8vw'}}>
+//         {/* <div style={{width:'100%', backgroundColor:'#283E7E'}}> */}
+//         <div style={{width:'100%', backgroundColor:'#1976d2'}}>
+//         < ReviewUpdate/>
+//         </div>
+//       </div>
+//       <div id="section5" style={{ boxShadow: '0 1px 3px rgba(0, 0, 0, 0.10)' }}>
+//       <Section5 />
+//       </div>
+//       <div id="section6">
+//         <div
+//         style={{
+//           textAlign: 'center',
+//           width: '70%',
+//           margin: '0 auto',
+//           fontSize: '1.5vw', // Tamaño de fuente ajustado al 3.5% del ancho de la ventana
+//           minWidth: '70%',
+//           // paddingBottom:'5.5vw'
+//           paddingTop:'5vw'
+//         }}
+//       >
+//         <h1>Echa un vistazo a nuestros videos</h1>
+//       </div>
+//                {videoData && videoData.length > 0 && videoData.map((video, index) => (
+//         <Videos key={index} title={video.title} description={video.description} url={video.url_video} />
+//       ))}
+
+//       <div
+//         style={{
+//           textAlign: 'right',
+//           width: '90%',
+//           // margin: '0 auto',
+//           fontSize: '2vw', // Tamaño de fuente ajustado al 3.5% del ancho de la ventana
+//           minWidth: '80%',
+//           paddingTop:'1.5vw'
+//         }}
+//       >
+
+//         <Link href="https://www.youtube.com/channel/UCiHli8YiB3YalYVsltDFltw" target="_blank" rel="noopener">
+//           ver más
+//         </Link>
+
+//       </div>
+//       </div>
+//       <div id="section7" style={{paddingTop:'3vw'}}>
+//         <ServiceList selectedBranch={selectedBranch}  />
+//       </div>
+
+//       <div id="section8">
+//       <div style={{ padding: '5%', margin: '3%' }}>
+//       <div
+//         style={{
+//           textAlign: 'center',
+//           width: '70%',
+//           margin: '0 auto',
+//           fontSize: '1.5vw', // Tamaño de fuente ajustado al 3.5% del ancho de la ventana
+//           minWidth: '70%',
+//         }}
+//       >
+//         <h1>Preguntas y respuestas</h1>
+//       </div>
+
+//       <div style={{ marginBottom: '2vw' }}>
+//         <input
+//           type="text"
+//           value={searchTerm}
+//           onChange={(e) => setSearchTerm(e.target.value)}
+//           placeholder="Busca lo que quieres saber..."
+//           style={{ width: '97%', padding: '1vw', fontSize: '1.3vw',
+//             borderRadius: '15px',
+//             border: '1px solid #ccc', // Borde definido explícitamente
+//             boxShadow: 'none', // Asegura que no haya sombra
+
+//            }}
+//         />
+//       </div>
+//       <div style={{ marginBottom: '2vw', overflowY: 'auto', maxHeight: '60vh', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', borderRadius: '15px' }}>
+//             {questionData && questionData.length > 0 && questionData.map((question, index) => (
+//         <QuestionAnswer key={index} question={question.question} answer={question.answer} />
+//         ))}
+//         </div>
+//       <div style={{ marginTop: '2vw' }}>
+//         <input
+//           type="text"
+//           value={newQuestion}
+//           onChange={(e) => setNewQuestion(e.target.value)}
+//           placeholder="¿En que podemos apoyarte?"
+//           style={{ width: '88%', padding: '1vw', fontSize: '1.3vw',
+//             borderRadius: '15px',
+//             border: '1px solid #ccc', // Borde definido explícitamente
+//             boxShadow: 'none',
+
+//            }}
+//         />
+//         <button onClick={handleAddQuestion} style={{ padding: '1vw', fontSize: '1vw', backgroundColor: '#00D6B2', color: '#fff', marginLeft: '1vw', cursor: 'pointer',
+//           borderRadius: '15px',
+//           border: '1px solid #ccc', // Borde definido explícitamente
+//           // boxShadow: 'none', // Asegura que no haya sombra
+//         }}>
+//           Preguntar
+//         </button>
+//       </div>
+//       </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Body;
+
+
+// import React, { useEffect, useState } from 'react';
+// import { Link } from '@mui/material';
+// import Section1 from '../Pages/Body/Section1';
+// import Section2 from '../Pages/Body/Section2';
+// import Section3 from '../Pages/Body/Section3';
+// import Section4 from '../Pages/Body/Section4';
+// import Section5 from '../Pages/Body/Section5';
+// import Videos from '../Pages/Body/videos';
+// import ReviewUpdate from '../Pages/Body/ReviewUpdate';
+// import ServiceList from '../Pages/Body/ServiceList';
+// import QuestionAnswer from '../Pages/Body/QuestionAnswer';
+// import SkeletonSection2 from '../Pages/Skeleton/SkeletonSection2';
+// import '../styles/HeaderStyles.scss';
+// import { Branches } from '../types/branches';
+// import { Questions } from '../types/questions';
+// import { VideosType } from '../types/videosType';
+// import { questionsServices } from '../services/questions';
+// import { videosServices } from '../services/videos';
+// import { removeDiacritics, isSimilar } from '../../utils/stringUtils';
+
+// interface BodyProps {
+//   selectedBranch: Branches | null;
+// }
+
+// const initialQnAList = [
+//   { question: "¿Cómo funciona el producto?", answer: "El producto funciona de manera eficiente mediante el uso de..." },
+//   { question: "¿Cuál es el tiempo de entrega?", answer: "El tiempo de entrega es de aproximadamente 3 a 5 días hábiles." },
+//   // Agrega más preguntas y respuestas aquí
+// ];
+
+// const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
+//   const [qnaList, setQnaList] = useState<Questions[]>(initialQnAList);
+//   const [newQuestion, setNewQuestion] = useState('');
+//   const [searchTerm, setSearchTerm] = useState('');
+//   const [questionData, setQuestionData] = useState<Questions[]>([]);
+//   const [videoData, setVideoData] = useState<VideosType[]>([]);
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         // Simulamos una llamada a la API con un delay de 1 segundo
+//         await new Promise(resolve => setTimeout(resolve, 1000));
+
+//         // Obtenemos las preguntas y respuestas del servicio
+//         const questionsResponse = await questionsServices.getAllQuestions('');
+//         setQuestionData(questionsResponse);
+
+//         // Obtenemos los datos de videos del servicio
+//         const videosResponse = await videosServices.getAllVideos('');
+//         setVideoData(videosResponse);
+
+//         // Aquí establecemos una lista de ejemplo para demostración
+//         const exampleQnAList = [
+//           { question: "¿Cómo puedo devolver un producto?", answer: "Puedes devolver un producto siguiendo estos pasos..." },
+//           { question: "¿Cuáles son las opciones de pago?", answer: "Aceptamos tarjetas de crédito, PayPal y transferencias bancarias." },
+//           { question: "¿Puedo cancelar mi pedido?", answer: "Sí, puedes cancelar tu pedido antes de que sea enviado." },
+//           { question: "¿Cuál es la política de garantía?", answer: "Ofrecemos una garantía de 1 año para todos nuestros productos." }
+//           // Agrega más preguntas y respuestas aquí
+//         ];
+
+//         // Establecemos la lista inicial
+//         setQnaList(exampleQnAList);
+//       } catch (error) {
+//         console.error('Error fetching data:', error);
+//       }
+//     };
+
+//     fetchData();
+//   }, []);
+
+//   const handleAddQuestion = () => {
+//     if (newQuestion.trim()) {
+//       const newQnAList = [...qnaList, { question: newQuestion, answer: '' }];
+//       setQnaList(newQnAList);
+//       setNewQuestion('');
+//     }
+//   };
+
+//   const filteredQnAList = qnaList.filter(qna =>
+//     isSimilar(removeDiacritics(qna.question.toLowerCase()), removeDiacritics(searchTerm.toLowerCase())) ||
+//     isSimilar(removeDiacritics(qna.answer.toLowerCase()), removeDiacritics(searchTerm.toLowerCase()))
+//   );
+
+//   return (
+//     <div style={{ width: '100%' }}>
+//       <div id="section1" style={{ paddingTop: '3vw' }}>
+//         <Section1 />
+//       </div>
+//       <div id="section2" style={{ paddingTop: '5vw' }}>
+//         {selectedBranch !== null && <Section2 selectedBranch={selectedBranch} />}
+//       </div>
+//       <div id="section3">
+//         {selectedBranch !== null && <Section3 branchId={selectedBranch?._id} />}
+//       </div>
+//       <div id="section4" style={{ paddingTop: '1.8vw' }}>
+//         <div style={{ width: '100%', backgroundColor: '#1976d2' }}>
+//           <ReviewUpdate />
+//         </div>
+//       </div>
+//       <div id="section5" style={{ boxShadow: '0 1px 3px rgba(0, 0, 0, 0.10)' }}>
+//         <Section5 />
+//       </div>
+//       <div id="section6">
+//         <div style={{ textAlign: 'center', width: '70%', margin: '0 auto', fontSize: '1.5vw', minWidth: '70%', paddingTop: '5vw' }}>
+//           <h1>Echa un vistazo a nuestros videos</h1>
+//         </div>
+//         {videoData && videoData.length > 0 && videoData.map((video, index) => (
+//           <Videos key={index} title={video.title} description={video.description} url={video.url_video} />
+//         ))}
+//         <div style={{ textAlign: 'right', width: '90%', fontSize: '2vw', minWidth: '80%', paddingTop: '1.5vw' }}>
+//           <Link href="https://www.youtube.com/channel/UCiHli8YiB3YalYVsltDFltw" target="_blank" rel="noopener">
+//             ver más
+//           </Link>
+//         </div>
+//       </div>
+//       <div id="section7" style={{ paddingTop: '3vw' }}>
+//         <ServiceList selectedBranch={selectedBranch} />
+//       </div>
+//       <div id="section8">
+//         <div style={{ padding: '5%', margin: '3%' }}>
+//           <div style={{ textAlign: 'center', width: '70%', margin: '0 auto', fontSize: '1.5vw', minWidth: '70%' }}>
+//             <h1>Preguntas y respuestas</h1>
+//           </div>
+//           <div style={{ marginBottom: '2vw' }}>
+//             <input
+//               type="text"
+//               value={searchTerm}
+//               onChange={(e) => setSearchTerm(e.target.value)}
+//               placeholder="Busca lo que quieres saber..."
+//               style={{
+//                 width: '97%', padding: '1vw', fontSize: '1.3vw',
+//                 borderRadius: '15px', border: '1px solid #ccc',
+//                 boxShadow: 'none'
+//               }}
+//             />
+//           </div>
+//           <div style={{ marginBottom: '2vw', overflowY: 'auto', maxHeight: '60vh', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', borderRadius: '15px' }}>
+//             {filteredQnAList.map((qna, index) => (
+//               <QuestionAnswer key={index} question={qna.question} answer={qna.answer} />
+//             ))}
+//           </div>
+//           <div style={{ marginTop: '2vw' }}>
+//             <input
+//               type="text"
+//               value={newQuestion}
+//               onChange={(e) => setNewQuestion(e.target.value)}
+//               placeholder="¿En que podemos apoyarte?"
+//               style={{
+//                 width: '88%', padding: '1vw', fontSize: '1.3vw',
+//                 borderRadius: '15px', border: '1px solid #ccc',
+//                 boxShadow: 'none'
+//               }}
+//             />
+//             <button onClick={handleAddQuestion} style={{ padding: '1vw', fontSize: '1vw', backgroundColor: '#00D6B2', color: '#fff', marginLeft: '1vw', cursor: 'pointer', borderRadius: '15px', border: '1px solid #ccc' }}>
+//               Preguntar
+//             </button>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Body;
+
+
+
+
+
+import React, { useEffect, useState } from 'react';
+import Button from '../atoms/Button';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+import { data_carrusel, imagesTexts } from '../../utils/utils';
+import Section1 from '../Pages/Body/Section1';
+import Section2 from '../Pages/Body/Section2';
+import Section3 from '../Pages/Body/Section3';
+import Section4 from '../Pages/Body/Section4';
+import Section5 from '../Pages/Body/Section5';
+import '../styles/HeaderStyles.scss';
+import VideoList from '../molecules/VideoList';
+import SectionVideoList from '../Pages/Body/SectionVideos';
+import Videos from '../Pages/Body/videos';
+import ServiceList from '../Pages/Body/ServiceList';
+import { Link, Typography } from '@mui/material';
+import ReviewUpdate from '../Pages/Body/ReviewUpdate';
+import QuestionAnswer from '../Pages/Body/QuestionAnswer';
+
+
+import { removeDiacritics, isSimilar } from '../../utils/stringUtils';
+import { Branches } from '../types/branches';
+
+
+
+
+
+// const Body: React.FC = () => {
+  interface BodyProps {
+    selectedBranch: Branches | null; // Tipo de la prop selectedBranch
+  }
+
+
+
+const videoData = [
+  {
+    title: "Plan de Tratamiento en Fisioterapia",
+    description: "Evaluación Inicial1: Basada en la historia clínica y el examen físico, se identifican las áreas problemáticas. Objetivos del Tratamiento: Definición de objetivos a corto y largo plazo, como reducir el dolor, mejorar la movilidad y fortalecer los músculos. Intervenciones Terapéuticas: Ejercicios Terapéuticos: Rutinas específicas para mejorar la fuerza, flexibilidad y rango de movimiento.",
+    url: "https://www.youtube.com/watch?v=c6lNu1JNa38&pp=ygUMZmlzaW90ZXJhcGlh"
+  },
+  {
+    title: "Otro Video de Fisioterapia",
+    description: "Evaluación Inicial2: Basada en la historia clínica y el examen físico, se identifican las áreas problemáticas. Objetivos del Tratamiento: Definición de objetivos a corto y largo plazo, como reducir el dolor, mejorar la movilidad y fortalecer los músculos. Intervenciones Terapéuticas: Ejercicios Terapéuticos: Rutinas específicas para mejorar la fuerza, flexibilidad y rango de movimiento.",
+    url: "https://www.youtube.com/watch?v=DCz4RStjxUM&pp=ygUMZmlzaW90ZXJhcGlh"
+  },
+  {
+    title: "Tercer Video de Fisioterapia",
+    description: "Evaluación Inicial3: Basada en la historia clínica y el examen físico, se identifican las áreas problemáticas. Objetivos del Tratamiento: Definición de objetivos a corto y largo plazo, como reducir el dolor, mejorar la movilidad y fortalecer los músculos. Intervenciones Terapéuticas: Ejercicios Terapéuticos: Rutinas específicas para mejorar la fuerza, flexibilidad y rango de movimiento.",
+    url: "https://www.youtube.com/watch?v=NLwDS3veHtw&pp=ygUMZmlzaW90ZXJhcGlh"
+  }
+];
+
+const qnaList = [
+  { question: "¿Cómo funciona el producto?", answer: "El producto funciona de manera eficiente mediante el uso de..." },
+  { question: "¿Cuál es el tiempo de entrega?", answer: "El tiempo de entrega es de aproximadamente 3 a 5 días hábiles." },
+  // Agrega más preguntas y respuestas aquí
+];
+
+
+
+const initialQnAList = [
+  { question: "¿Cómo funciona el producto?", answer: "El producto funciona de manera eficiente mediante el uso de..." },
+  { question: "¿Cuál es el tiempo de entrega?", answer: "El tiempo de entrega es de aproximadamente 3 a 5 días hábiles." },
+  // Agrega más preguntas y respuestas aquí
+];
+
+
+const Body: React.FC<BodyProps> = ({ selectedBranch }) => {
+  const [qnaList, setQnaList] = useState(initialQnAList);
+  const [newQuestion, setNewQuestion] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+
+
+  const handleAddQuestion = () => {
+    if (newQuestion.trim()) {
+      setQnaList([...qnaList, { question: newQuestion, answer: '' }]);
+      setNewQuestion('');
+    }
+  };
+
+  const filteredQnAList = qnaList.filter(
+    (qna) => 
+      isSimilar(removeDiacritics(qna.question.toLowerCase()), removeDiacritics(searchTerm.toLowerCase())) ||
+      isSimilar(removeDiacritics(qna.answer.toLowerCase()), removeDiacritics(searchTerm.toLowerCase()))
+  );
+  return (
+    <div style={{ width: '100%' }}>
+      <div id="section1" style={{paddingTop:'3vw'}}>
+        <Section1 />
+      </div>
+      <div id="section2" style={{paddingTop:'5vw'}}>
+        {/* <Section2 selectedBranch={selectedBranch} /> */}
+        {selectedBranch!== null && <Section2 selectedBranch={selectedBranch} />}
+      </div>
+      <div id="section3">
+        {selectedBranch!== null && <Section3 branchId={selectedBranch?._id} />}
+      </div>
+      {/* <div id="section4" style={{paddingTop:'1vw'}}>
+        <Section4 />
+      </div> */}
+      <div id="section4" style={{paddingTop:'1.8vw'}}>
+        {/* <div style={{width:'100%', backgroundColor:'#283E7E'}}> */}
+        <div style={{width:'100%', backgroundColor:'#1976d2'}}>
+        < ReviewUpdate/>
+        </div>
+      </div>
+      <div id="section5" style={{ boxShadow: '0 1px 3px rgba(0, 0, 0, 0.10)' }}>
+      <Section5 />
+      </div>
+      <div id="section6">
+        <div
+        style={{
+          textAlign: 'center',
+          width: '70%',
+          margin: '0 auto',
+          fontSize: '1.5vw', // Tamaño de fuente ajustado al 3.5% del ancho de la ventana
+          minWidth: '70%',
+          // paddingBottom:'5.5vw'
+          paddingTop:'5vw'
+        }}
+      >
+        <h1>Echa un vistazo a nuestros videos</h1>
+      </div>
+        {videoData.map((video, index) => (
+        <Videos key={index} title={video.title} description={video.description} url={video.url} />
+      ))}
+      
+      <div
+        style={{
+          textAlign: 'right',
+          width: '90%',
+          // margin: '0 auto',
+          fontSize: '2vw', // Tamaño de fuente ajustado al 3.5% del ancho de la ventana
+          minWidth: '80%',
+          paddingTop:'1.5vw'
+        }}
+      >
+        
+        <Link href="https://www.youtube.com/channel/UCiHli8YiB3YalYVsltDFltw" target="_blank" rel="noopener">
+          ver más
+        </Link>
+      
+      </div>
+      </div>
+      <div id="section7" style={{paddingTop:'3vw'}}>
+        <ServiceList selectedBranch={selectedBranch}  />
+      </div>
+    
+      <div id="section8">
+      <div style={{ padding: '5%', margin: '3%' }}>
+      <div
+        style={{
+          textAlign: 'center',
+          width: '70%',
+          margin: '0 auto',
+          fontSize: '1.5vw', // Tamaño de fuente ajustado al 3.5% del ancho de la ventana
+          minWidth: '70%',
+        }}
+      >
+        <h1>Preguntas y respuestas</h1>
+      </div>
+      
+      <div style={{ marginBottom: '2vw' }}>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Busca lo que quieres saber..."
+          style={{ width: '97%', padding: '1vw', fontSize: '1.3vw',
+            borderRadius: '15px',
+            border: '1px solid #ccc', // Borde definido explícitamente
+            boxShadow: 'none', // Asegura que no haya sombra
+
+           }}
+        />
+      </div>
+      <div style={{ marginBottom: '2vw', overflowY: 'auto', maxHeight: '60vh', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', borderRadius: '15px' }}>
+          {filteredQnAList.map((qna, index) => (
+            <QuestionAnswer key={index} question={qna.question} answer={qna.answer} />
+          ))}
+        </div>
+      <div style={{ marginTop: '2vw' }}>
+        <input
+          type="text"
+          value={newQuestion}
+          onChange={(e) => setNewQuestion(e.target.value)}
+          placeholder="¿En que podemos apoyarte?"
+          style={{ width: '88%', padding: '1vw', fontSize: '1.3vw',
+            borderRadius: '15px',
+            border: '1px solid #ccc', // Borde definido explícitamente
+            boxShadow: 'none', 
+
+           }}
+        />
+        <button onClick={handleAddQuestion} style={{ padding: '1vw', fontSize: '1vw', backgroundColor: '#00D6B2', color: '#fff', marginLeft: '1vw', cursor: 'pointer', 
+          borderRadius: '15px',
+          border: '1px solid #ccc', // Borde definido explícitamente
+          // boxShadow: 'none', // Asegura que no haya sombra
+        }}>
+          Preguntar
+        </button>
+      </div>
+      </div>
+      </div>
+    </div>
+  );
+};
+
+export default Body;
+
+

@@ -1,6 +1,6 @@
-export interface Videos {
+export interface VideosType {
     _id: string;
-    url_video: string;
+    urlVideo: string;
     title: string;
     description: string;
   }
