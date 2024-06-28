@@ -52,10 +52,6 @@ async function getAllUsersByIdBranch(idBranch: string, token: string, page: numb
       headers: { Authorization: 'Bearer ' + token },
     });
 
-    console.log('***USER****')
-    console.log({response})
-    console.log('***END****')
-
     if(response){
       const formattedData = response.data.map((item: any) => ({
         user: {
